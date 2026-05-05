@@ -26,18 +26,24 @@ html,body{
   -webkit-tap-highlight-color:transparent;
 }
 #top-bar{
-  position:sticky;top:0;z-index:100;
+  position:fixed;top:0;left:0;right:0;z-index:100;
   transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 #top-bar.hidden{transform:translateY(-100%)}
 
 #header{
-  background:rgba(0,0,0,0.65);backdrop-filter:blur(12px);
-  padding:12px 16px;border-bottom:1px solid var(--border);
+  height:53px;
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);
+  padding:0 16px;
   display:flex;align-items:center;justify-content:space-between;
 }
-#header h1{font-size:20px;font-weight:700}
-#progress{font-size:14px;color:var(--accent);font-weight:600}
+.header-left, .header-right { width:60px; display:flex; align-items:center; }
+.header-right { justify-content:flex-end; }
+.header-center { flex:1; display:flex; justify-content:center; }
+.x-logo { width:24px; height:24px; fill:var(--text); }
+.profile-icon { width:32px; height:32px; border-radius:50%; background-color:#1d9bf0; overflow:hidden; }
+.profile-icon img { width:100%; height:100%; object-fit:cover; }
+#progress{font-size:13px;color:var(--text);font-weight:700}
 
 #tabs{
   background:rgba(0,0,0,0.65);backdrop-filter:blur(12px);
@@ -59,7 +65,7 @@ html,body{
 }
 
 #controls{
-  display:flex;gap:8px;padding:10px 16px;
+  display:flex;gap:8px;padding:116px 16px 10px;
   border-bottom:1px solid var(--border);flex-wrap:wrap;
 }
 .ctrl-btn{
@@ -188,8 +194,17 @@ html,body{
 <div id="app">
   <div id="top-bar">
     <header id="header">
-      <h1>消化器マスター (対策編)</h1>
-      <span id="progress"></span>
+      <div class="header-left">
+        <div class="profile-icon">
+          <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" alt="profile">
+        </div>
+      </div>
+      <div class="header-center">
+        <svg viewBox="0 0 24 24" class="x-logo"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.005 4.094H5.03z" fill="currentColor"></path></svg>
+      </div>
+      <div class="header-right">
+        <span id="progress"></span>
+      </div>
     </header>
     <nav id="tabs"></nav>
   </div>
