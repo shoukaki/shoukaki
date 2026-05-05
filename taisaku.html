@@ -161,8 +161,10 @@ html,body{
   text-align:center;color:var(--sub);padding:60px 20px;font-size:15px;
 }
 
+#timeline { padding-bottom: 70px; }
+
 #bottom-nav{
-  position:fixed;bottom:0;left:0;right:0;height:53px;
+  position:fixed;bottom:0;left:0;right:0;height:65px;
   background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);
   border-top:1px solid var(--border);
   display:flex;justify-content:space-around;align-items:center;
@@ -174,14 +176,17 @@ html,body{
   flex:1;height:100%;color:var(--text);position:relative;cursor:pointer;
 }
 .icon-wrapper { position:relative; display:flex; }
-.nav-item svg, .nav-item img{width:28px;height:28px;object-fit:contain}
-.active-dot{
-  position:absolute;top:-2px;right:-2px;width:6px;height:6px;
-  background-color:var(--accent);border-radius:50%;
-}
+.nav-item svg, .nav-item img{width:36px;height:36px;object-fit:contain}
+
+/* Adjustments for misaligned images */
+.nav-item:nth-child(1) img { transform: scale(1.1) translateY(-2px); }
+.nav-item:nth-child(2) img { transform: scale(1.05) translateY(1px); }
+.nav-item:nth-child(3) img { transform: scale(1.1) translateY(0px); }
+.nav-item:nth-child(4) img { transform: scale(1.05) translateY(2px); }
+.nav-item:nth-child(5) img { transform: scale(1.05) translateY(-1px); }
 
 #fab{
-  position:fixed;bottom:69px;right:16px;width:56px;height:56px;
+  position:fixed;bottom:81px;right:16px;width:56px;height:56px;
   border-radius:50%;background-color:var(--accent);
   display:flex;justify-content:center;align-items:center;
   box-shadow:0 8px 24px rgba(0,0,0,0.2);
