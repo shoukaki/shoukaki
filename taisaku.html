@@ -162,6 +162,7 @@ html,body{
   <div id="controls">
     <button class="ctrl-btn" id="btn-unmastered" onclick="toggleUnmastered()">未回答のみ</button>
     <button class="ctrl-btn" id="btn-shuffle" onclick="shuffleCards()">シャッフル</button>
+    <button class="ctrl-btn" id="btn-unshuffle" onclick="resetShuffle()">元の順序</button>
     <button class="ctrl-btn" id="btn-reveal-all" onclick="revealAll()">全て表示</button>
     <button class="ctrl-btn" id="btn-reset-all" onclick="resetAll()">全リセット</button>
   </div>
@@ -352,6 +353,17 @@ function shuffleCards(){
       const j = Math.floor(Math.random() * (i + 1));
       [sec.questions[i], sec.questions[j]] = [sec.questions[j], sec.questions[i]];
     }
+  });
+  renderTimeline();
+}
+
+function resetShuffle(){
+  QUIZ_DATA.forEach(sec => {
+    sec.questions.sort((a, b) => {
+      let aNum = parseInt(a.id.split('-').pop());
+      let bNum = parseInt(b.id.split('-').pop());
+      return aNum - bNum;
+    });
   });
   renderTimeline();
 }
